@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:3000
+
+### Obtain access to system
+# @name login
+POST {{baseUrl}}/auth/signin
+Content-Type: application/x-www-form-urlencoded
+
+username=User22&password=SuperSecretP4sww0!
+
+### Access token
+@authToken = {{login.response.headers.X-accessToken}}
+
+
+###
+GET {{baseUrl}}/tasks
+Authorization: {{authToken}}
